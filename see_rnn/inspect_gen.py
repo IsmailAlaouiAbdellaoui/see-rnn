@@ -204,7 +204,7 @@ def _make_grads_fn(model, layers=None, params=None, mode='outputs',
     grads = model.optimizer.get_gradients(model.total_loss, params)
 
     if TF_KERAS:
-        inputs = [model.inputs[0], model._feed_targets[0]]
+        inputs = [model.inputs[0:10], model._feed_targets[0]]#handle networks with 10 inputs
     else:
         inputs = [model.inputs[0], model.sample_weights[0],
                   model._feed_targets[0], K.learning_phase()]
